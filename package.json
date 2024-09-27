@@ -63,6 +63,7 @@
 	},
 	"files": [
 		"dist",
-		"cpp"
+		"cpp",
+		"src"
 	]
 }
