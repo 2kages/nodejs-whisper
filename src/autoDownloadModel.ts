@@ -3,6 +3,8 @@ import shell from 'shelljs'
 import fs from 'fs'
 import { MODELS_LIST, MODELS } from './constants'
 
+shell.config.execPath = shell.which('node').toString();
+
 export default async function autoDownloadModel(
 	autoDownloadModelName?: string,
 	verbose?: boolean,
@@ -37,11 +39,11 @@ export default async function autoDownloadModel(
 		}
 
 		shell.chmod('+x', scriptPath)
-		const result = shell.exec(`${scriptPath} ${autoDownloadModelName}`, { silent: !verbose })
+		shell.exec(`${scriptPath} ${autoDownloadModelName}`, { silent: !verbose })
 
-		if (result.code !== 0) {
-			throw new Error(`[Nodejs-whisper] Failed to download model: ${result.stderr}`)
-		}
+		// if (result.code !== 0) {
+		// 	throw new Error(`[Nodejs-whisper] Failed to download model: ${result.stderr}`)
+		// }
 
 		console.log('[Nodejs-whisper] Attempting to compile model...')
 		shell.cd('../')

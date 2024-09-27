@@ -6,6 +6,7 @@ import { MODELS } from './constants'
 const WHISPER_CPP_PATH = path.join(__dirname, '..', 'cpp', 'whisper.cpp')
 const WHISPER_CPP_MAIN_PATH = './main'
 const projectDir = process.cwd()
+shell.config.execPath = shell.which('node').toString();
 
 export interface IShellOptions {
 	silent: boolean
